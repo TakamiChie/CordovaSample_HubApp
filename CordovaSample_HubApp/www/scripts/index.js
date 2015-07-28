@@ -31,7 +31,10 @@
                 break;
               case "section1_clearbutton":
                 // 項目削除
-                $("#section1 .content").empty();
+                var owner = document.querySelector("#section1 .content");
+                while (owner.firstChild) {
+                  owner.removeChild(owner.firstChild);
+                }
                 break;
             }
           }
