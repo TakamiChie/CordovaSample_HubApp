@@ -27,6 +27,7 @@
                 var owner = document.querySelector("#section1 .content");
                 var color = ["silver", "orange", "yellow", "red", "cyan"];
                 div.style.backgroundColor = color[Math.round(Math.random() * color.length)];
+                WinJS.UI.Animation.enterContent(div);
                 owner.appendChild(div);
                 break;
               case "section1_clearbutton":
