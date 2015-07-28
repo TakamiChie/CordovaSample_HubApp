@@ -27,6 +27,13 @@
                 var owner = document.querySelector("#section1 .content");
                 var color = ["silver", "orange", "yellow", "red", "cyan"];
                 div.style.backgroundColor = color[Math.round(Math.random() * color.length)];
+                // アニメ追加
+                div.addEventListener("pointerdown", onPointerDown, false);
+                div.addEventListener("touchstart", onPointerDown, false);
+                div.addEventListener("mousedown", onPointerDown, false);
+                div.addEventListener("pointerup", onPointerUp, false);
+                div.addEventListener("touchend", onPointerUp, false);
+                div.addEventListener("mouseup", onPointerUp, false);
                 WinJS.UI.Animation.enterContent(div);
                 owner.appendChild(div);
                 break;
@@ -52,4 +59,14 @@
     function onResume() {
         // TODO: このアプリケーションが再アクティブ化されました。ここで、アプリケーションの状態を復元します。
     };
-} )();
+
+    function onPointerDown(evt) {
+      WinJS.UI.Animation.pointerDown(evt.target);
+      evt.preventDefault();
+    }
+
+    function onPointerUp(evt) {
+      WinJS.UI.Animation.pointerUp(evt.target);
+      evt.preventDefault();
+    }
+})();
