@@ -23,11 +23,11 @@
               // section1
               case "section1_addbutton":
                 // 項目追加
-                var div = $("<div>");
+                var div = document.createElement("div");
+                var owner = document.querySelector("#section1 .content");
                 var color = ["silver", "orange", "yellow", "red", "cyan"];
-                div.css("background-color", color[Math.round(Math.random() * color.length)]);
-                div.show();
-                $("#section1 .content").append(div);
+                div.style.backgroundColor = color[Math.round(Math.random() * color.length)];
+                owner.appendChild(div);
                 break;
               case "section1_clearbutton":
                 // 項目削除
