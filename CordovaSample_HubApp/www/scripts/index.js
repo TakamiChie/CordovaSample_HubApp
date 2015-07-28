@@ -16,10 +16,13 @@
       WinJS.UI.Pages.define("index.html");
       WinJS.Namespace.define("Sample", {
         toolbarCommand: WinJS.UI.eventHandler(function (ev) {
+          // ツールバーイベントハンドラ
           var command = ev.currentTarget;
           if (command.winControl) {
             switch (command.winControl.id) {
+              // section1
               case "section1_addbutton":
+                // 項目追加
                 var div = $("<div>");
                 var color = ["silver", "orange", "yellow", "red", "cyan"];
                 div.css("background-color", color[Math.round(Math.random() * color.length)]);
@@ -27,6 +30,7 @@
                 $("#section1 .content").append(div);
                 break;
               case "section1_clearbutton":
+                // 項目削除
                 $("#section1 .content").empty();
                 break;
             }
