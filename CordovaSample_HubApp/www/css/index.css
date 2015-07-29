@@ -13,3 +13,10 @@
   float: left;
   background-color: gray;
 }
+
+#section2 .colorbox{
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+  float: left;
+}

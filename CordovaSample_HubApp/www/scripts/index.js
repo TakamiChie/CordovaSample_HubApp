@@ -6,15 +6,20 @@
     "use strict";
 
     document.addEventListener( 'deviceready', onDeviceReady.bind( this ), false );
-
+    var item = [];
     function onDeviceReady() {
       // Cordova の一時停止を処理し、イベントを再開します
       document.addEventListener( 'pause', onPause.bind( this ), false );
-      document.addEventListener( 'resume', onResume.bind( this ), false );
-        
+      document.addEventListener('resume', onResume.bind(this), false);
+
+      for (var i = 1; i < 6; i++) {
+        item.push({ title: "item" + i, text: "test" + i, color: randomColor() });
+      }
+
       // TODO: Cordova が読み込まれました。ここで、Cordova を必要とする初期化を実行します。
       WinJS.UI.Pages.define("index.html");
       WinJS.Namespace.define("Sample", {
+        data: new WinJS.Binding.List(item),
         toolbarCommand: WinJS.UI.eventHandler(function (ev) {
           // ツールバーイベントハンドラ
           var command = ev.currentTarget;

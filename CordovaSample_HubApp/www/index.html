@@ -15,8 +15,16 @@
     </div>
   </div>
 
+  <!-- リストビューのテンプレート -->
+  <div class="template_LVItem" data-win-control="WinJS.Binding.Template">
+    <div data-win-bind="style.backgroundColor: color" class="colorbox"></div>
+    <h2 data-win-bind="textContent: title"></h2>
+    <p data-win-bind="textContent: text"></p>
+  </div>
+
   <div data-win-control="WinJS.UI.Hub">
-    <div class="hubsection" id="section1" data-win-control="WinJS.UI.HubSection" 
+    <!-- HTMLパーツが含まれるセクション -->
+    <div class="hubsection" id="section1" data-win-control="WinJS.UI.HubSection"
          data-win-options="{header: 'セクション1', isHeaderStatic: true}">
       <div data-win-control="WinJS.UI.ToolBar">
         <button data-win-control="WinJS.UI.Command" data-win-options="{
@@ -37,6 +45,35 @@
       <div class="content">
 
       </div>
+    </div>
+
+    <div class="hubsection" id="section2" data-win-control="WinJS.UI.HubSection"
+         data-win-options="{header: 'セクション2', isHeaderStatic: true}">
+      <!-- リストビューが含まれるセクション -->
+      <div data-win-control="WinJS.UI.ToolBar">
+        <button data-win-control="WinJS.UI.Command" data-win-options="{
+                id: 'section1_addbutton',
+                label: 'アイコン追加',
+                section: 'primary',
+                type: 'button',
+                icon: 'add',
+                onclick: Sample.toolbarCommand}"></button>
+        <button data-win-control="WinJS.UI.Command" data-win-options="{
+                id: 'section1_clearbutton',
+                label: 'すべて削除',
+                section: 'primary',
+                type: 'button',
+                icon: 'delete',
+                onclick: Sample.toolbarCommand}"></button>
+      </div>
+      <!-- リストビュー（selectionModeとtapBehaviorは排他みたいなので気をつける）-->
+      <div class="listview" data-win-control="WinJS.UI.ListView"
+           data-win-options="{
+            itemDataSource: Sample.data.dataSource,
+            itemTemplate: select('.template_LVItem'),
+            selectionMode: 'single',
+            layout: { type: WinJS.UI.ListLayout }
+           }"></div> 
     </div>
   </div>
 
