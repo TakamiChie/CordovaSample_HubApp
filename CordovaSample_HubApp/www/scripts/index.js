@@ -25,8 +25,7 @@
                 // 項目追加
                 var div = document.createElement("div");
                 var owner = document.querySelector("#section1 .content");
-                var color = ["silver", "orange", "yellow", "red", "cyan"];
-                div.style.backgroundColor = color[Math.round(Math.random() * color.length)];
+                div.style.backgroundColor = randomColor();
                 // アニメ追加
                 div.addEventListener("pointerdown", onPointerDown, false);
                 div.addEventListener("touchstart", onPointerDown, false);
@@ -93,5 +92,10 @@
     function onPointerUp(evt) {
       WinJS.UI.Animation.pointerUp(evt.target);
       evt.preventDefault();
+    }
+
+    function randomColor() {
+      var color = ["silver", "orange", "yellow", "red", "cyan"];
+      return color[Math.round(Math.random() * (color.length - 1))];
     }
 })();
