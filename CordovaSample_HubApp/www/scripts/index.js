@@ -34,8 +34,28 @@
                 div.addEventListener("pointerup", onPointerUp, false);
                 div.addEventListener("touchend", onPointerUp, false);
                 div.addEventListener("mouseup", onPointerUp, false);
-                WinJS.UI.Animation.enterContent(div);
+                var animIndex = Math.round(Math.random() * 3);
+                div.innerText = "Anim:" + animIndex;
+                // Insert expanding item into document flow. This will change the position of the affected items.
+                div.style.display = "block";
+                div.style.position = "inherit";
+                div.style.opacity = "1";
                 owner.appendChild(div);
+                switch (animIndex) {
+                  case 0:
+                    WinJS.UI.Animation.enterContent(div);
+                    break;
+                  case 1:
+                    WinJS.UI.Animation.createAddToListAnimation(div, owner).execute();
+                    break;
+                  case 2:
+                    WinJS.UI.Animation.createAddToSearchListAnimation(div, owner).execute();
+                    break;
+                  case 3:
+                    WinJS.UI.Animation.createExpandAnimation(div, owner).execute();
+                    break;
+
+                }
                 break;
               case "section1_clearbutton":
                 // 項目削除
