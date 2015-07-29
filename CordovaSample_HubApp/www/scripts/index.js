@@ -34,7 +34,7 @@
                 div.addEventListener("pointerup", onPointerUp, false);
                 div.addEventListener("touchend", onPointerUp, false);
                 div.addEventListener("mouseup", onPointerUp, false);
-                var animIndex = Math.round(Math.random() * 3);
+                var animIndex = Math.round(Math.random() * 5);
                 div.innerText = "Anim:" + animIndex;
                 // Insert expanding item into document flow. This will change the position of the affected items.
                 div.style.display = "block";
@@ -54,7 +54,12 @@
                   case 3:
                     WinJS.UI.Animation.createExpandAnimation(div, owner).execute();
                     break;
-
+                  case 4:
+                    WinJS.UI.Animation.slideUp(div);
+                    break;
+                  case 5:
+                    WinJS.UI.Animation.showPopup(div, owner);
+                    break;
                 }
                 break;
               case "section1_clearbutton":
