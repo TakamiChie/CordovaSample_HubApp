@@ -14,12 +14,18 @@
       <h1>ハブアプリケーションのサンプル</h1>
     </div>
   </div>
-
   <!-- リストビューのテンプレート -->
   <div class="template_LVItem" data-win-control="WinJS.Binding.Template">
     <div data-win-bind="style.backgroundColor: color" class="colorbox"></div>
     <h2 data-win-bind="textContent: title"></h2>
     <p data-win-bind="textContent: text"></p>
+  </div>
+  <!-- リストビューのテンプレート -->
+  <div class="template_GridItem" data-win-control="WinJS.Binding.Template">
+    <div data-win-bind="style.backgroundColor: color" class="colorbox">
+      <h2 data-win-bind="textContent: title"></h2>
+      <p data-win-bind="textContent: text"></p>
+    </div>
   </div>
 
   <div data-win-control="WinJS.UI.Hub">
@@ -73,7 +79,36 @@
             itemTemplate: select('.template_LVItem'),
             selectionMode: 'single',
             layout: { type: WinJS.UI.ListLayout }
-           }"></div> 
+           }"></div>
+    </div>
+
+    <div class="hubsection" id="section3" data-win-control="WinJS.UI.HubSection"
+         data-win-options="{header: 'セクション3', isHeaderStatic: true}">
+      <!-- グリッドビューが含まれるセクション -->
+      <div data-win-control="WinJS.UI.ToolBar">
+        <button data-win-control="WinJS.UI.Command" data-win-options="{
+                id: 'section3_addbutton',
+                label: 'アイコン追加',
+                section: 'primary',
+                type: 'button',
+                icon: 'add',
+                onclick: Sample.toolbarCommand}"></button>
+        <button data-win-control="WinJS.UI.Command" data-win-options="{
+                id: 'section3_clearbutton',
+                label: 'すべて削除',
+                section: 'primary',
+                type: 'button',
+                icon: 'delete',
+                onclick: Sample.toolbarCommand}"></button>
+      </div>
+      <!-- グリッドビュー -->
+      <div class="listview" data-win-control="WinJS.UI.ListView"
+           data-win-options="{
+            itemDataSource: Sample.data3.dataSource,
+            itemTemplate: select('.template_GridItem'),
+            selectionMode: 'single',
+            layout: { type: WinJS.UI.GridLayout }
+           }"></div>
     </div>
   </div>
 

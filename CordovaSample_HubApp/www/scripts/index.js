@@ -20,7 +20,9 @@
       WinJS.UI.Pages.define("index.html");
       WinJS.Namespace.define("Sample", {
         data: new WinJS.Binding.List(item),
+        data3: new WinJS.Binding.List(item),
         section2_listindex: 6,
+        section3_listindex: 6,
         toolbarCommand: WinJS.UI.eventHandler(function (ev) {
           // ツールバーイベントハンドラ
           var command = ev.currentTarget;
@@ -74,7 +76,7 @@
                   owner.removeChild(owner.firstChild);
                 }
                 break;
-              // section2
+                // section2
               case "section2_addbutton":
                 // 項目追加
                 i = Sample.section2_listindex++;
@@ -84,6 +86,18 @@
                 // 項目削除
                 while (Sample.data.length > 0) {
                   Sample.data.pop();
+                }
+                break;
+                // section3
+              case "section3_addbutton":
+                // 項目追加
+                i = Sample.section3_listindex++;
+                Sample.data3.push({ title: "item" + i, text: "test" + i, color: randomColor() });
+                break;
+              case "section3_clearbutton":
+                // 項目削除
+                while (Sample.data3.length > 0) {
+                  Sample.data3.pop();
                 }
                 break;
             }
