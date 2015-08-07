@@ -74,7 +74,7 @@
                   owner.removeChild(owner.firstChild);
                 }
                 break;
-              // section1
+              // section2
               case "section2_addbutton":
                 // 項目追加
                 i = Sample.section2_listindex++;
