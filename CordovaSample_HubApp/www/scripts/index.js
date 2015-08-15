@@ -17,7 +17,43 @@
       }
 
       // TODO: Cordova が読み込まれました。ここで、Cordova を必要とする初期化を実行します。
-      WinJS.UI.Pages.define("index.html");
+      WinJS.UI.Pages.define("index.html", {
+        // load→init→render→processed→ready
+        load: function (uri) {
+          console.log("load");
+          console.log(uri);
+        },
+
+        init: function (element, options) {
+          console.log("init");
+          console.log(element);
+          console.log(options);
+        },
+
+        render: function (element, options, loadResult) {
+          console.log("render");
+          console.log(element);
+          console.log(options);
+          console.log(loadResult);
+        },
+
+        processed: function (element, options) {
+          console.log("processed");
+          console.log(element);
+          console.log(options);
+        },
+
+        ready: function (element, options) {
+          console.log("ready");
+          console.log(element);
+          console.log(options);
+        },
+        
+        unload: function () {
+          console.log("unload");
+        }
+      });
+
       WinJS.Namespace.define("Sample", {
         data: new WinJS.Binding.List(item),
         data3: new WinJS.Binding.List(item),
